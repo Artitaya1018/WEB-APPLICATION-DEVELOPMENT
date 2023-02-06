@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!-- font Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.min.css">
+  <!-- Google fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700&family=Poppins:wght@700;900&family=Press+Start+2P&display=swap"
+    rel="stylesheet">
+  <!--load amimate.css from CDN-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+  <!--load WOW js from CDN-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"
+    integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <style>
+
+    body {
+      font-family: "Poppins", sans-serif;
+    }
+    html {
+      scroll-behavior: smooth;
+      /*scroll-behaviorระบุว่าต้องการให้ตำแหน่งการเลื่อนเคลื่อนไหวอย่างราบรื่นหรือไม่ แทนที่จะกระโดดแบบตรง*/
+    }
+    .section-padding {
+      padding: 100px 0;
+    }
+    .section-header {
+      padding-bottom: 30px;
+    }
+    .section-header h2 {
+      font-size: 50px;
+      color: firebrick;
+      text-shadow: 0 0 35px #1818185f;
+    }
+
+    /* Navber Area*/
+    .navbar-brand {
+      color: #fff !important;
+      font-weight: bold;
+      font-size: 38px;
+    }
+    .nav-link,.navbar-nav {
+      color: rgb(255, 255, 255) !important;
+      padding-left: 0;
+      padding-right: 0;
+      font-weight: bold;
+    }
+    .navbar-roggler {
+      color: rgba(240, 248, 255, 0.158);
+    }
+    .navbar-toggler {
+      background: rgb(255, 255, 255);
+      box-shadow: 0 0 35px rgb(1, 1, 5);
+    }
+    .nav-item {
+      color: rgb(255, 15, 15);
+      padding: 0 20px;
+      /*:ความกว้าง ความยาว*/
+      text-transform: uppercase;
+    }
+    .nav-item a:hover {
+      color: var(--main-color) !important;
+      transition: .4s;
+    }
+    .navbar-toggler-icon {
+      cursor: pointer;
+    }
+
+    /* Slider Area */
+    .slider-area {
+      background-image: url(https://wallpaperaccess.com/full/333783.jpg);
+      -webkit-background-size: cover;
+      background-size: cover;
+      /*cover – ขยายทั้งด้านกว้างและยาวในอัตราเท่ากัน ห้เต็มจอ broswer พอดี  */
+      background-position: 100vh;
+      position: relative;
+      color: #fff;
+      margin-top: 55px;
+      padding-bottom: 5%;
+      z-index: 1;
+    }
+    .slider-area::before {
+      z-index: -1;
+      content: '';
+      position: absolute;
+      /*อ้างอิงตำแหน่งของ parent*/
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(360deg, rgba(70, 70, 70, 0.739), transparent)
+    }
+    .slider-text h1 {
+      font-size: 80px;
+      font-weight: bold;
+    }
+    .slider-text a {
+      text-decoration: none;
+      display: inline-block;
+      background-color: #b40000;
+      color: #ddd;
+      padding: 15px 25px;
+      margin-top: 25px;
+      margin: 10px;
+      text-transform: uppercase;
+    }
+    .slider-text {
+      text-align: center;
+      padding-top: 20%;
+    }
+
+    /* About Area*/
+    .about-img img {
+      width: 100%;
+    }
+    .item-text {
+      padding-left: 15px;
+    }
+    .about-img {
+      padding-right: 15px;
+    }
+    .item-text h4 {
+      margin-bottom: 30px;
+    }
+
+    /* Stats Area*/
+    .stats-area {
+      background-image: url(https://i.pinimg.com/564x/6f/be/d1/6fbed11c8d8663c82dc7df171d2a262e.jpg);
+      background-attachment: fixed;
+      /* การกำหนดว่าจะให้พื้นหลังเลื่อนไปตามหน้าจอที่มีอยู่ */
+      -webkit-background-size: cover;
+      background-size: cover;
+      background-position: center center;
+      position: relative;
+      z-index: 1;
+      /*ตำแหน่งของ Layout อ่ะ ยิ่งตัวเลขยิ่ง มากก็จะอยู่บนสุด*/
+    }
+
+    .stats-area::before {
+      content: '';
+      /*content มีไว้แทรกข้อความ หรือสัญลักษณ์ต่างๆ เอาไว้ ด้านหน้า หรือ ด้านหลังกล่องที่เราสั่งมัน ดังนั้นเจ้า content นี้ มันจะทำงานเมื่อใช้คู่กับ :before หรือ :after เสมอ*/
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(180deg, #000, transparent);
+      z-index: -1;
+    }
+    .single-stats {
+      color: aliceblue;
+      text-align: center;
+    }
+    .single-stats i {
+      margin-bottom: 20px;
+    }
+    .single-stats h2 {
+      font-size: 50px;
+      font-weight: bold;
+    }
+    .single-stats p {
+      font-family: "Nunito";
+    }
+
+    /* News Area*/
+    .news-area {
+      text-align: center;
+    }
+    .news-img img {
+      width: 200px;
+      height: 200px;
+    }
+    .single-news {
+      border: 1px solid #ddd;
+      padding: 100px 100px;
+      margin-bottom: 50px;
+    }
+    .single-news h2 {
+      margin: 15px 0;
+      font-size: 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .single-news:hover {
+      background: #262626;
+      color: #fff;
+      transition: .6s;
+    }
+    .single-msg {
+      text-align: left;
+      margin-bottom: 50px;
+      margin-top: 30px
+    }
+    .single-msg h2 {
+      font-size: 38px;
+      margin-bottom: 30px;
+      margin-top: 0px;
+    }
+    .single-msg p {
+      font-size: 20px;
+      font-weight: lighter !important;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    }
+    .single-msg-img {
+      margin-bottom: 50px;
+    }
+
+    /* Award Area*/
+    .award-area {
+      position: relative;
+      background-attachment: fixed;
+      background-image: url(https://i.pinimg.com/564x/d8/f0/c4/d8f0c41465b12e1e0ec486e10f9b7e62.jpg);
+      -webkit-background-size: cover;
+      background-size: cover;
+      background-position: center center;
+      z-index: 1;
+      text-align: center;
+    }
+    .award-area::before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(49, 49, 49, 0.787), transparent);
+      z-index: -1;
+    }
+    .single-award h2 {
+      color: #fff;
+      text-transform: uppercase;
+    }
+    .single-award a {
+      text-decoration: none;
+      display: inline-block;
+      background-color: #b40000;
+      color: #ddd;
+      padding: 15px 30px;
+      margin-top: 25px;
+      border-radius: 50px;
+      text-transform: uppercase;
+    }
+
+    /* Contact Area*/
+    .single-contact {
+      text-align: center;
+    }
+    .single-contact h2 {
+      margin-top: 25px;
+      font-size: x-large;
+
+    }
+    .dropdown-menu{
+        background: #343a40;
+    }
+    .dropdown-menu .dropdown-item{
+        color: #ddd;
+    }
+    /* Footer Area*/
+    .footer-area {
+      background: #262626;
+      color: #fff;
+      padding: 30px 0;
+      text-align: center;
+    }
+
+    /* Responsive css*/
+    @media only screen and (min-width:768px) and (max-width: 991px) {
+      .section-header h2 {
+        font-size: 40px;
+        font-weight: bold;
+      }
+
+      .navbar-toggler-icon i.fa {
+        color: #fff;
+      }
+
+      .slider-text {
+        padding-right: 70%;
+      }
+
+      .about-img {
+        padding-right: 0;
+        margin-bottom: 30px;
+      }
+
+      .item-text {
+        padding-left: 0;
+      }
+
+      .single-stats h2 {
+        font-size: 35px;
+      }
+
+      .single-stats p {
+        font-size: 14px;
+      }
+    }
+
+    @media only screen and (max-width: 767px) {
+      .section-header h2 {
+        font-size: 32px;
+        font-weight: bold;
+      }
+
+      .navbar-toggler-icon i.fa {
+        color: #fff;
+      }
+
+      .slider-text h1 {
+        font-size: 32px;
+      }
+
+      .slider-text {
+        padding-top: 65%;
+      }
+
+      .slider-text h2 {
+        font-size: 20px;
+      }
+
+      .slider-text a {
+        font-size: 14px;
+        padding: 5px 10px;
+      }
+
+      .item-text {
+        margin-top: 30px;
+      }
+
+      .item-text h4 {
+        margin-bottom: 30px;
+        font-size: 20px;
+      }
+
+      .about-img {
+        padding-right: 0;
+      }
+
+      .item-text {
+        padding-left: 0;
+      }
+
+      .single-stats h2 {
+        font-size: 40px;
+      }
+
+    }
+  </style>
+</head>
+<header>
+
+  <!-- Navbar -->
+  <div class="nav-area fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#home">ST<span style="color: #b40000"><i
+              class="fa fa-star fa-1x"></i></span>RPER</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+            <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="#news" class="nav-link">News</a></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  BRANDS
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#chanel">chanel</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#versace">versace</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#ysl">YSL</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#dior">DIOR</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#prada">PRADA</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#gucci">GUCCI</a></li>
+                </ul>
+              </li>
+            <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            
+        </ul>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<body>
+  <!-- slider -->
+  <div class="slider-area" id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-xs-12">
+          <div class="slider-text">
+            <h1>Welcome Divinector</h1>
+            <h2>Welcome Divinector</h2>
+            <p>
+              <a href="#contact">Contect Me</a>
+              <a href="#about">More Info</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <div id="about" class="about-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+          <div class="section-header">
+            <h2>Who We Area</h2>
+            <p>A Little bit about our Company</p>
+          </div>
+        </div>
+      </div>
+      <div class=" row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <div class="about-img wow animated fadeInLeft" data-wow-delay="0.9s">
+            <img src="https://i.pinimg.com/564x/6f/99/26/6f99267ea484d477021f057788d8292d.jpg" alt="about1">
+          </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <div class="item-text">
+            <h4>Multionsl Company</h4>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Laudantium minus, vitae eligendi quo sit porro cupiditate est
+              ratione veniam illo quam officia soluta amet facilis similique
+              tempora aperiam, quidem fugiat! </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="single-stats">
+            <i class="fa fa-users fa-2x"></i>
+            <h2>32</h2>
+            <p>Happy Customer</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="single-stats">
+            <i class="fa fa-user-plus fa-2x"></i>
+            <h2>85</h2>
+            <p>Customer Served</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="single-stats">
+            <i class="fa fa-coffee fa-2x"></i>
+            <h2>168</h2>
+            <p>Cup of coffee</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="single-stats">
+            <i class="fa fa-trophy fa-2x"></i>
+            <h2>65</h2>
+            <p>Awards won</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- News -->
+  <div id="news" class="news-area section-padding">
+    <div class="container">
+      <!-- Header -->
+      <div class="row ">
+        <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+          <div class="section-header">
+            <h2> News </h2>
+            <p>These are some services that our company provide</p>
+          </div>
+        </div>
+      </div>
+      <!-- Massager right-->
+      <div class="row featurette">
+        <div class="single-msg col-md-7 ">
+          <h2 class="featurette-heading fw-normal lh-1">First featurette heading.<span class="text-muted">It’ll blow
+              your mind.</span></h2>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem dolore facilis saepe
+            excepturi minus hic, quod, veritatis nam autem velit officiis fugiat pariatur incidunt,
+            omnis repellat. Esse impedit vitae assumenda at ratione consectetur nostrum sint rerum
+            eos ab. Illum quam ipsam asperiores quisquam veniam minima voluptatum dolores nulla eum
+            cumque vero, quo cupiditate obcaecati velit, nisi sit a. Ea corporis nesciunt eos
+            perspiciatis? Quis sapiente distinctio reiciendis asperiores enim harum.</p>
+        </div>
+        <div class="single-msg-img col-md-5">
+          <img src="https://i.pinimg.com/564x/0d/0e/70/0d0e701117a7b9c71abbd094797bac47.jpg" class="w-100 p-3 mh-100">
+        </div>
+      </div>
+      <!-- Massager left-->
+      <div class="row msg-row featurette">
+        <div class="col-md-7 order-md-2 single-msg">
+          <h2>Second featurette heading.<span class="text-muted">It’ll blow your mind.</span></h2>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem dolore facilis saepe
+            excepturi minus hic, quod, veritatis nam autem velit officiis fugiat pariatur incidunt,
+            omnis repellat. Esse impedit vitae assumenda at ratione consectetur nostrum sint rerum
+            eos ab. Illum quam ipsam asperiores quisquam veniam minima voluptatum dolores nulla eum
+            cumque vero, quo cupiditate obcaecati velit, nisi sit a. Ea corporis nesciunt eos
+            perspiciatis? Quis sapiente distinctio reiciendis asperiores enim harum.</p>
+        </div>
+        <div class="col-md-5 order-md-1 single-msg-img featurette-heading fw-normal lh-1">
+          <img src="https://i.pinimg.com/564x/f3/68/1f/f3681fa32c197f925cf72777385bf53a.jpg" class="w-100 p-3 mh-100">
+        </div>
+      </div>
+
+      <!-- News Brands-->
+      <div class="row">
+        <div class="col-lg-4 col-md-6" id="chanel">
+          <div class="single-news wow animated fadeInLeft" data-wow-delay="0.2s">
+            <div class="news-img " >
+              <a href="https://www.chanel.com/us/" target="_blank">
+                <img src="https://i.pinimg.com/564x/0a/85/73/0a85730880bd86e75720e9fed4c8be3f.jpg" class="rounded "
+                  alt="channel">
+              </a>
+            </div>
+            <h2>CHANEL</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, qui vitae rerum ipsa
+              facere
+              harum doloremque sint praesentium aliquam unde.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" id="versace">
+          <div class="single-news wow animated fadeInDown" data-wow-delay="0.4s">
+            <div class="news-img " >
+              <a href="https://www.versace.com/international/en/home/" target="_blank">
+                <img src="https://i.pinimg.com/564x/06/16/d7/0616d7cc74d9caf95a90baaf47454794.jpg" class="rounded "
+                  alt="versace">
+              </a>
+            </div>
+            <h2>versace</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, qui vitae rerum ipsa
+              facere
+              harum doloremque sint praesentium aliquam unde.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" id="ysl">
+          <div class="single-news wow animated fadeInRight" data-wow-delay="0.6s">
+            <div class="news-img " >
+              <a href="https://www.ysl.com/en-en" target="_blank">
+                <img src="https://i.pinimg.com/564x/af/25/61/af25618cfc005cf840b0137e86a6d069.jpg" class="rounded "
+                  alt="ํYves Saint Laurent">
+              </a>
+            </div>
+            <h2>YSL</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, qui vitae rerum ipsa
+              facere
+              harum doloremque sint praesentium aliquam unde.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" id="dior">
+          <div class="single-news wow animated fadeInLeft" data-wow-delay="0.8s">
+            <div class="news-img " >
+              <a href="https://www.dior.com/en_th" target="_blank">
+                <img src="https://i.pinimg.com/564x/4c/7e/11/4c7e119b1333c0066b8aa5902eadb13a.jpg" class="rounded "
+                  alt="Dior">
+              </a>
+            </div>
+            <h2>Dior</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, qui vitae rerum ipsa
+              facere
+              harum doloremque sint praesentium aliquam unde.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" id="prada">
+          <div class="single-news wow animated fadeInUp" data-wow-delay="1s">
+            <div class="news-img " >
+              <a href="https://www.prada.com/ww/en.html" target="_blank">
+                <img src="https://i.pinimg.com/564x/6f/95/69/6f956920548de947057a780390d8e2a4.jpg" class="rounded "
+                  alt="PRADA">
+              </a>
+            </div>
+            <h2>PRADA</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, qui vitae rerum ipsa
+              facere
+              harum doloremque sint praesentium aliquam unde.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6" id="gucci">
+          <div class="single-news wow animated fadeInRight" data-wow-delay="1.2s">
+            <div class="news-img " >
+              <a href="https://www.gucci.com/us/en/" target="_blank">
+                <img src="https://i.pinimg.com/564x/62/76/32/6276327ee9ee965cfe426561a9b14ff7.jpg" class="rounded "
+                  alt="Gucci">
+              </a>
+            </div>
+            <h2>Gucci</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At, qui vitae rerum ipsa
+              facere
+              harum doloremque sint praesentium aliquam unde.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Award -->
+  <div class="award-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="single-award">
+            <h2>We are Award winning Company</h2>
+            <a href="#home"> H O M E </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div id="contact" class="contact-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs text-center">
+          <div class="section-header">
+            <h2>Contact Me</h2>
+            <p>Feel Free to contact for yoour upcoming projects</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="single-contact">
+            <a href="https://www.facebook.com" target="_blank">
+              <i class="fa fa-plane fa-3x"></i>
+            </a>
+            <h2>FaceBook</h2>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-contact">
+            <a href="https://www.instagram.com" target="_blank">
+              <i class="fa fa-id-card fa-3x"></i>
+            </a>
+            <h2>Instagrame</h2>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-contact">
+            <a href="https://line.me/en/" target="_blank">
+              <i class="fa fa-bed fa-3x"></i>
+            </a>
+            <h2>LINE</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<footer>
+  <div class="footer-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>All Right Reserved by Divinector 2023</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</html>
