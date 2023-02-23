@@ -16,6 +16,9 @@
 
         function button_date() {
             const button = document.createElement('button');
+            const container = document.createElement('div');
+            container.appendChild(button);
+            container.style.height = "2.5rem";
             button.style.cursor = "pointer";
             let activate = false;
             let worker;
@@ -37,12 +40,13 @@
                 }
                 else {
                     worker.terminate();
-                    button.style.position = "static";
+                    button.style.position = null;
                 }
+                
             }
 
             button.appendChild(document.createTextNode("Click me to display Date and Time."));
-            document.getElementById(id).appendChild(button);
+            document.getElementById(id).appendChild(container);
         }
 
         function display_info() {
